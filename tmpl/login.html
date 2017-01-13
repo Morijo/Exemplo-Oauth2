@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Login portal de identificação</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Login portal de identificação</h2>
+  <p>
+O pedido veio de um terceiro, através do gateway Tyk, para tentar acessar um recurso OAuth. O gateway Tyk identificou a API a que pertence e redirecionou o cliente para o seu provedor de identidade de login (você controla este formulário).  
+<p>
+    <p>
+    Como o pedido que gerou esta página é um redirecionamento POST 307, os dados do POST de origem devem ser mantidos e você pode ver as variáveis abaixo.
+	</p>
+    <ul>
+      <li>Client ID: {{.ClientID}}</li>
+      <li>Redirect URL: {{.RedirectURI}}</li>
+      <li>Response Type: {{.ResponseType}}</li>
+    </ul>
+  </p>
+  <p>
+Os valores acima são espelhados como campos ocultos no formulário abaixo. Vamos fingir que faça login no seu servidor ...  
+</p>
+  <form role="form" action="/approved" method="POST">
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter email">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+    </div>
+    <input type="hidden" class="form-control" id="response_type" name="response_type" value="{{.ResponseType}}">
+      <input type="hidden" class="form-control" id="client_id" name="client_id" value="{{.ClientID}}">
+      <input type="hidden" class="form-control" id="redirect_uri" name="redirect_uri" value="{{.RedirectURI}}">
+    <button type="submit" class="btn btn-default">Login</button>
+  </form>
+</div>
+
+</body>
+</html>

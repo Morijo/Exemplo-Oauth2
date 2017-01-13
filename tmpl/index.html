@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Solicitante de Terceiros (Cliente)</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>1. Solicitante de Terceiros (Cliente)</h2>
+  <p>
+    O solicitante neste caso é um aplicativo (móvel ou SPWA), que está tentando obter um token de acesso. O solicitante inicia o processo OAuth postando seu pedido no nó de extremidade do Tyk no seu gateway.
+  </p>
+  <p>
+    Clique no botão abaixo para iniciar o processo
+  </p>
+  <form role="form" method="POST" action="http://127.0.0.1:8080/cep/oauth/authorize/">
+      <input type="hidden" class="form-control" id="response_type" name="response_type" value="token">
+      <input type="hidden" class="form-control" id="client_id" name="client_id" value="f533533ee5ba473c75f9e0fca8e3e975">
+      <input type="hidden" class="form-control" id="redirect_uri" name="redirect_uri" value="http://localhost:8000/final">
+    <button type="submit" class="btn btn-default">Iniciar OAuth</button>
+  </form>
+</div>
+
+</body>
+</html>

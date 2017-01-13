@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Final</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Retorno final</h2>
+  <p>
+Seu login do portal validou a identidade e fez uma chamada para o nó de extremidade de autorização do Tyk, que forneceu um URI de redirecionamento, o provedor do portal pode agora redirecionar esse usuário para o URL de redirecionamento definido pelo cliente apropriado  
+</p>
+  <p>
+    O token de autenticação, e outros dados serão fornecidos como um fragmento no URL, nós extraímos o token abaixo.
+  </p>
+  <p>
+    O ciclo de solicitação está completo e um token de acesso foi gerado: <span style="font-weight: bold" id="token"></span>
+  </p>
+  
+</div>
+
+<script>
+  
+  $(document).ready(function(){
+    
+    var hash = window.location.hash;
+
+    var parts = hash.split("&")
+    var token_parts = parts[0].split("=")
+
+    $("#token").text(token_parts[1]);
+});
+  
+
+</script>
+</body>
+</html>
